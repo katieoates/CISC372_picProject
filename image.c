@@ -158,7 +158,7 @@ int main(int argc,char** argv){
 
     for(int i = 0; i<num_threads; i++){
         int startRow = i * rowsPerThread;
-        int endRow = (i == num_threads - 1) ? srcImage.height : startRow + rowsPerThreads;
+        int endRow = (i == num_threads - 1) ? srcImage.height : startRow + rowsPerThread;
         threadData [i] = (ThreadData){
             .srcImage = &srcImage,
             .destImage = &destImage,
