@@ -17,7 +17,7 @@ typedef struct {
     int end_row;
     Image* srcImage;
     Image* destImage;
-    Matrix algorithim;
+    Matrix algorithm;
 } ThreadData;
 
 //An array of kernel matrices to be used for image convolution.  
@@ -89,8 +89,8 @@ void* thread_convolute(void* arg){
             algorithm[i][j] = data->algorithm[i][j];
         }
     }
-    int startRow = data->start_Row;
-    int endRow = data->end_Row;
+    int startRow = data->start_row;
+    int endRow = data->end_row;
 
     int row, pix, bit, span;
     span = srcImage->bpp * srcImage->bpp;
@@ -152,7 +152,7 @@ int main(int argc,char** argv){
     
     //create thread data
     int num_threads = 10;
-    int rowsPerThreads = srcImage.height / num_threads;
+    int rowsPerThread = srcImage.height / num_threads;
     pthread_t threads[num_threads];
     ThreadData threadData[num_threads];
 
@@ -162,8 +162,8 @@ int main(int argc,char** argv){
         threadData [i] = (ThreadData){
             .srcImage = &srcImage,
             .destImage = &destImage,
-            .startRow = startRow,
-            .endRow = endRow
+            .start_row = startRow,
+            .end_row = endRow
         };
         for(int j = 0; j < 3; ++j){
             for(int k = 0; k < 3; ++k)
