@@ -116,7 +116,7 @@ int main(int argc,char** argv){
     destImage.data=malloc(sizeof(uint8_t)*destImage.width*destImage.bpp*destImage.height);
     
     convolute(&srcImage, &destImage, algorithms[type]);
-    stbi_write_png("outputImage.png", destImage.width, destImage.hieght, destImage.bpp, destImage.data, destImage.bpp*destImage.width);
+    stbi_write_png("outputImage.png", destImage.width, destImage.height, destImage.bpp, destImage.data, destImage.bpp*destImage.width);
     stbi_image_free(srcImage.data);
 
     free(destImage.data);
